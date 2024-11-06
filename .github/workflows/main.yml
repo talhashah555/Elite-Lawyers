@@ -1,0 +1,39 @@
+stages:
+    - build
+    - test
+    - push
+    - deploy
+
+build_job:
+    stage: build
+    script:
+        - echo "this is build command"
+
+test_job:
+    stage: test
+    script:
+        - echo "this is testing"
+
+push_job:
+    stage: push
+    script:
+        - echo "this is pushing"
+
+deploy_job:
+    stage: deploy
+    script:
+        - echo "this is deploying"
+
+dev_test_job:
+    stage: test
+    script:
+     - echo "tested for dev"
+
+
+prd_test_job:
+    stage: test
+    script:
+     - echo "tested for prd"
+
+
+
