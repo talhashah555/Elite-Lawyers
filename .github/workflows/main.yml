@@ -1,44 +1,46 @@
-# Add the 'on' block to define the triggers
 on:
   push:
     branches:
-      - main  # Trigger workflow on push to main branch
+      - main  # Trigger on push to the main branch
   pull_request:
     branches:
-      - main  # Trigger workflow on pull requests targeting the main branch
+      - main  # Trigger on pull request to the main branch
 
-stages:
-  - build
-  - test
-  - push
-  - deploy
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Build
+        run: echo "This is build command"
 
-build_job:
-  stage: build
-  script:
-    - echo "this is build command"
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        run: echo "This is testing"
 
-test_job:
-  stage: test
-  script:
-    - echo "this is testing"
+  push_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push
+        run: echo "This is pushing"
 
-push_job:
-  stage: push
-  script:
-    - echo "this is pushing"
+  deploy_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        run: echo "This is deploying"
 
-deploy_job:
-  stage: deploy
-  script:
-    - echo "this is deploying"
+  dev_test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test for Dev
+        run: echo "Tested for dev"
 
-dev_test_job:
-  stage: test
-  script:
-    - echo "tested for dev"
-
-prd_test_job:
-  stage: test
-  script:
-    - echo "tested for prd"
+  prd_test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test for Prod
+        run: echo "Tested for prod"
