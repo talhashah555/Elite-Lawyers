@@ -1,39 +1,44 @@
+# Add the 'on' block to define the triggers
+on:
+  push:
+    branches:
+      - main  # Trigger workflow on push to main branch
+  pull_request:
+    branches:
+      - main  # Trigger workflow on pull requests targeting the main branch
+
 stages:
-    - build
-    - test
-    - push
-    - deploy
+  - build
+  - test
+  - push
+  - deploy
 
 build_job:
-    stage: build
-    script:
-        - echo "this is build command"
+  stage: build
+  script:
+    - echo "this is build command"
 
 test_job:
-    stage: test
-    script:
-        - echo "this is testing"
+  stage: test
+  script:
+    - echo "this is testing"
 
 push_job:
-    stage: push
-    script:
-        - echo "this is pushing"
+  stage: push
+  script:
+    - echo "this is pushing"
 
 deploy_job:
-    stage: deploy
-    script:
-        - echo "this is deploying"
+  stage: deploy
+  script:
+    - echo "this is deploying"
 
 dev_test_job:
-    stage: test
-    script:
-     - echo "tested for dev"
-
+  stage: test
+  script:
+    - echo "tested for dev"
 
 prd_test_job:
-    stage: test
-    script:
-     - echo "tested for prd"
-
-
-
+  stage: test
+  script:
+    - echo "tested for prd"
